@@ -75,7 +75,9 @@ namespace CoreRCON
 			await SendPacketAsync(new RCONPacket(0, PacketType.Auth, _password));
 			await _authenticationTask.Task;
 
-			Task.Run(() => WatchForDisconnection(_reconnectDelay)).Forget();
+			// Don't start watching for disconnection. We don't want to even stay connected.
+            // TODO: Should probably call Dispose and OnDisconnected.
+			// Task.Run(() => WatchForDisconnection(_reconnectDelay)).Forget();
 		}
 
 		public void Dispose()
