@@ -194,7 +194,7 @@ namespace CoreRCON
 					Identifier = Guid.NewGuid().ToString().Substring(0, 5);
 					await SendCommandAsync(Constants.CHECK_STR + Identifier);
 				}
-				catch (Exception ex)
+				catch (Exception)
 				{
 					Dispose();
 					OnDisconnected();
